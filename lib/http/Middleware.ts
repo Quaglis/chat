@@ -1,12 +1,9 @@
-// import {get} from 'lib/http/methods'
+import { Request, Response, NextFunction } from 'express';
 
-
-export abstract class Middleware
+export interface Middleware 
 {
-    
-    constructor()
-    {
-        
-    }
+    /**
+     * Промежуточный обработчик запросов
+     */
+    handle(request: Request, response: Response, next: NextFunction): void;
 }
-
