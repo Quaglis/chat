@@ -1,4 +1,6 @@
-import app from 'src/app'
-import server from'src/server'
+import { run } from 'src/app'
+import chatAppInit from 'src/apps/chat'
 
-server.run(app)
+chatAppInit()
+
+run()

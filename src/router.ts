@@ -1,7 +1,9 @@
-import { TestoController } from 'src/controllers/TestoController'
+import { /*Request, Response, Router,*/ Express } from 'express'
 
 
 
-export default [
-    TestoController,
-]
+export default (_app: Express) => {
+    _app.get('/amogus', (req, res) => {
+        
+    })
+}
