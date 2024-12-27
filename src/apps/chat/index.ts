@@ -1,7 +1,3 @@
-import { chatNamespace } from 'src/apps/chat/chat-socket'
-import { authMiddleware } from 'lib/socket/middlewares'
+import chatNamespaceInit from 'src/apps/chat/chat-socket'
 
-
-export default () => {
-    chatNamespace.use(authMiddleware)
-}
+export default chatNamespaceInit
