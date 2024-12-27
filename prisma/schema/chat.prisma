@@ -1,0 +1,29 @@
+model Chat {
+    id          Int         @id @default(autoincrement())
+    name        String?
+    messages    Message[]
+    members     Member[]
+}
+
+model Message {
+    id          Int         @id @default(autoincrement())
+    text        String
+    readed      Boolean     @default(false)
+    createdAt   DateTime    @db.Timestamp(6) @default(now())
+    updatedAt   DateTime?   @db.Timestamp(6) @updatedAt
+    chat        Chat        @relation(fields: [chatId], references: [id], onDelete: Cascade)
+    chatId      Int
+    user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+    userId      Int
+}
+
+model Member {
+    id          Int     @id @default(autoincrement())
+    user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+    userId      Int
+    chat        Chat    @relation(fields: [chatId], references: [id], onDelete: Cascade)
+    chatId      Int
+    readOnly    Boolean @default(false)
+
+    @@unique([userId, chatId])
+}
