@@ -2,7 +2,7 @@ import { Namespace} from "socket.io"
 import { Chat, Message, User } from "@prisma/client"
 import { io } from 'src/app'
 import chatService from './chat-service'
-import chatAuthMiddleware from "./chat-auth-middleware"
+import chatSocketAuthMiddleware from "./chat-socket-auth-middleware"
 
 
 interface ChatClientToServerEvents {
@@ -45,7 +45,7 @@ export const chatNamespace: Namespace<
 
 export default function() {
     chatNamespace
-        .use(chatAuthMiddleware)
+        .use(chatSocketAuthMiddleware)
         .on("connection", async (socket) => {
 
             socket.on("create_chat", async ({name, members}) => {
