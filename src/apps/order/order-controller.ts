@@ -5,7 +5,6 @@ import { orderNamespace } from './order-socket'
 
 export default () => {
     app.get('/app/order/change-status/:id/:status', (req: Request, res: Response) => {
-        console.log(req.params)
 
         orderNamespace.in(`order-${req.params.id}`).emit("change_status", { 
             status: req.params.status 

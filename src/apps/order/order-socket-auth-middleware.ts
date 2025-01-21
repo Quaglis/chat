@@ -35,7 +35,7 @@ export default async function(socket: Socket, next: (err?: ExtendedError) => voi
                 break;
         
             default:
-                return next(new Error("Неподдерживаемая платформа"));
+                return next(new Error("Неподдерживаемая платформа"))
         }
             
 
